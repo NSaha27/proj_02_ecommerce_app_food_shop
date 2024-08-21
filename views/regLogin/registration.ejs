@@ -1,0 +1,100 @@
+<%- include("../shop/header.ejs") %>
+<%- include("../shop/navbar.ejs") %>
+<li class="nav-item">
+  <a class="nav-link" href="/about-us">About Us</a>
+</li>
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Food Items
+  </a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/customer-login">Customer</a>
+</li>
+</ul>
+<form class="d-flex" role="search">
+<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+<button class="btn btn-success" type="submit">Search</button>
+</form>
+</div>
+</div>
+</nav>
+<main class="container-fluid d-flex p-md-4 p-sm-3">
+  <div class="card w-50 mx-auto">
+    <h5 class="card-header"><%= pageTitle %></h5>
+    <div class="card-body">
+      <form action="<% if(userType === 'admin'){ %>/admin-registration<% }else{ %>/customer-registration<% } %>" method="post">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Name</label>
+          <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="ex. John Doe">
+        </div>
+        <% if(userType === "admin"){ %>
+        <div class="mb-3">
+          <label for="exampleFormControlInput2" class="form-label">Date of Birth</label>
+          <input type="date" name="dob" class="form-control" id="exampleFormControlInput2" placeholder="ex. 15/08/2024">
+        </div>
+        <% } %>
+        <div class="mb-3">
+          <label for="flexRadioDefault" class="form-label">Sex</label>
+          <div class="d-flex flex-row gap-2">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="sex" id="flexRadioDefault1" value="male" checked>
+              <label class="form-check-label" for="flexRadioDefault1">
+                Male
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="sex" id="flexRadioDefault2" value="female">
+              <label class="form-check-label" for="flexRadioDefault2">
+                Female
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="sex" id="flexRadioDefault3" value="other">
+              <label class="form-check-label" for="flexRadioDefault3">
+                Other
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput3" class="form-label">Aadhar</label>
+          <input type="text" name="aadhar" class="form-control" id="exampleFormControlInput3" placeholder="ex. 1234 5678 9012">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Address</label>
+          <textarea name="address" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput5" class="form-label">Phone</label>
+          <input type="text" name="phone" class="form-control" id="exampleFormControlInput5" placeholder="ex. +91 8747621443">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput6" class="form-label">Email address</label>
+          <input type="email" name="email" class="form-control" id="exampleFormControlInput6" placeholder="ex. name@example.com">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput7" class="form-label">Password</label>
+          <input type="password" name="password" class="form-control" id="exampleFormControlInput7" placeholder="ex. name@example.com">
+        </div>
+        <div class="mb-3">
+          <button type="submit" class="btn btn-success">Register</button>
+          <button type="reset" class="btn btn-danger">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer">
+      <p>or</p>
+      <p>
+        <a href="<% if(userType === 'admin'){ %>/admin-login<% }else{ %>/customer-login<% } %>" class="">log in here...</a>
+      </p>
+    </div>
+  </div>
+</main>
+<%- include("../shop/footer.ejs") %>
